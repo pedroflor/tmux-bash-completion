@@ -101,7 +101,7 @@ _tmux() {
             -L) _tmux_complete_socket_name "${cur}" ;;
             -S) _tmux_complete_socket_path "${cur}" ;;
 
-            attach-session|attach|at)
+            attach-session|attach|att|at)
             case "$prev" in
                 -t) _tmux_complete_session "${cur}" "${tmux_args[@]}" ;;
                 *) options="-t -d" ;;
@@ -121,7 +121,7 @@ _tmux() {
                 -t) _tmux_complete_session "${cur}" "${tmux_args[@]}" ;;
                 *) options="-t -d" ;;
             esac ;;
-            new-session|new|n)
+            new-session|new)
             case "$prev" in
                 -t) _tmux_complete_session "${cur}" "${tmux_args[@]}" ;;
                 -[n|d|s]) options="-d -n -s -t --" ;;
