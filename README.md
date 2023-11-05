@@ -5,7 +5,7 @@ Added some shortcuts
 **Install**
 ```
 # Install
-curl https://github.com/pedroflor/tmux-bash-completion/blob/main/tmux-bash-completion.sh >> ~/.bash_completion
+curl https://raw.githubusercontent.com/pedroflor/tmux-bash-completion/main/tmux-bash-completion.sh >> ~/.bash_completion
 
 # Load
 . ~/.bash_completion
