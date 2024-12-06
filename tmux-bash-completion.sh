@@ -46,14 +46,14 @@ function _tmux_complete_window() {
 function _tmux_complete_socket_name() {
     local IFS=$'\n'
     local cur="${1}" && shift
-    COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -W "$(find /tmp/tmux-$UID -type s -printf '%P\n')" -- "${cur}") )
+    COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -W "$(find "${TMUX_TMPDIR:-/tmp}/tmux-$UID" -type s -printf '%P\n')" -- "${cur}") )
     options=""
     return 0
 }
 function _tmux_complete_socket_path() {
     local IFS=$'\n'
     local cur="${1}" && shift
-    COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -W "$(find /tmp/tmux-$UID -type s -printf '%p\n')" -- "${cur}") )
+    COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -W "$(find "${TMUX_TMPDIR:-/tmp}/tmux-$UID" -type s -printf '%p\n')" -- "${cur}") )
     options=""
     return 0
 }
@@ -101,7 +101,7 @@ _tmux() {
             -L) _tmux_complete_socket_name "${cur}" ;;
             -S) _tmux_complete_socket_path "${cur}" ;;
 
-            attach-session|attach|att|at)
+            attach-session|attach)
             case "$prev" in
                 -t) _tmux_complete_session "${cur}" "${tmux_args[@]}" ;;
                 *) options="-t -d" ;;
